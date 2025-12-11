@@ -1,4 +1,4 @@
-# 📦 Flipkart Customer Service Satisfaction – Machine Learning Project
+## 📦 Flipkart Customer Service Satisfaction – Machine Learning Project
 
 **Project Type:** Classification
 **Contribution:** Individual
@@ -6,7 +6,7 @@
 
 ---
 
-## 📘 Project Overview
+### 📘 Project Overview
 
 In the highly competitive e-commerce space, customer satisfaction is one of the strongest drivers of brand loyalty and retention. Flipkart handles millions of support interactions through phone, chat, email, and other channels. With such scale, it becomes challenging to maintain consistent customer experience and agent performance.
 
@@ -21,11 +21,11 @@ This project ultimately enables Flipkart to identify dissatisfaction early, impr
 
 ---
 
-# 📊 Dataset Description
+## 📊 Dataset Description
 
 The dataset contains **85,907 customer support interaction records** with **20 variables**, including:
 
-### **Key Columns**
+#### **Key Columns**
 
 * `channel_name` – Phone/Email/Inbound/Outbound
 * `category`, `Sub-category` – Issue types
@@ -36,7 +36,7 @@ The dataset contains **85,907 customer support interaction records** with **20 v
 * `Tenure Bucket`, `Agent Shift`
 * `CSAT Score` (Target variable: 1 to 5)
 
-### **Missing Data**
+#### **Missing Data**
 
 Several features had high missing values, such as:
 
@@ -47,9 +47,9 @@ These were handled through **dropping**, **aggregation**, or **encoding**.
 
 ---
 
-# 🧹 1. Data Wrangling
+## 🧹 1. Data Wrangling
 
-### ✔ Cleaning Steps
+#### ✔ Cleaning Steps
 
 * Removed redundant ID-based columns
 * Parsed and cleaned datetime fields
@@ -64,21 +64,21 @@ These were handled through **dropping**, **aggregation**, or **encoding**.
 
 ---
 
-# 📐 2. Statistical Hypothesis Testing
+## 📐 2. Statistical Hypothesis Testing
 
 Three statistical analyses were conducted:
 
-### **H₁: Bottom-10 agents have lower CSAT than others**
+#### **H₁: Bottom-10 agents have lower CSAT than others**
 
 **Test Used:** Mann–Whitney U Test
 ✔ Result: **Significant (p < 0.001)** → Bottom agents perform poorly.
 
-### **H₂: CSAT differs across support channels**
+#### **H₂: CSAT differs across support channels**
 
 **Test Used:** Kruskal–Wallis Test
 ✔ Result: **Significant difference across channels**
 
-### **H₃: Agent tenure is associated with CSAT**
+#### **H₃: Agent tenure is associated with CSAT**
 
 **Test Used:** Spearman Correlation
 ✔ Result: Positive monotonic relationship (ρ = 0.04, p < 0.001)
@@ -86,9 +86,9 @@ Three statistical analyses were conducted:
 
 ---
 
-# 💡 3. Feature Engineering
+## 💡 3. Feature Engineering
 
-### ✔ Encoding Techniques Used
+#### ✔ Encoding Techniques Used
 
 | Technique                             | Columns                             | Why Used?                                       |
 | ------------------------------------- | ----------------------------------- | ----------------------------------------------- |
@@ -97,7 +97,7 @@ Three statistical analyses were conducted:
 | **Ordinal Encoding**                  | Tenure Bucket                       | Data is ordered & numeric                       |
 | **Drop High-Cardinality Identifiers** | Agent/Supervisor/Manager            | Prevent overfitting; replaced with avg CSAT     |
 
-### ✔ New Features Created
+#### ✔ New Features Created
 
 * Sentiment score (`customer_response`)
 * Historical satisfaction averages for:
@@ -110,15 +110,15 @@ Three statistical analyses were conducted:
 
 ---
 
-# 🔍 4. Feature Selection
+## 🔍 4. Feature Selection
 
-### **Methods Used**
+#### **Methods Used**
 
 ✔ **Domain knowledge filtering**
 ✔ **Correlation Analysis**
 ✔ **Aggregation to reduce cardinality**
 
-### **Top 10 Most Important Features**
+#### **Top 10 Most Important Features**
 
 1. customer_response (sentiment)
 2. agent_avg_csat
@@ -135,9 +135,9 @@ These were selected based on correlation, interpretability, and business importa
 
 ---
 
-# 🔄 5. Data Transformation & Scaling
+## 🔄 5. Data Transformation & Scaling
 
-### ✔ Transformation Method
+#### ✔ Transformation Method
 
 **Yeo–Johnson Power Transformation**
 
@@ -145,7 +145,7 @@ These were selected based on correlation, interpretability, and business importa
 * Reduces both left & right skewness
 * Suitable for linear & tree models
 
-### ✔ Scaling Method
+#### ✔ Scaling Method
 
 **StandardScaler**
 
@@ -154,11 +154,11 @@ These were selected based on correlation, interpretability, and business importa
 
 ---
 
-# 🤖 6. Machine Learning Models
+## 6. Machine Learning Models
 
 Two classification models were developed:
 
-## **🟦 Model 1: Random Forest Classifier**
+### ** Model 1: Random Forest Classifier**
 
 * Handles non-linear interactions
 * class_weight="balanced"
@@ -170,7 +170,7 @@ Two classification models were developed:
 
 ---
 
-## **🟧 Model 2: XGBoost Classifier**
+### ** Model 2: XGBoost Classifier**
 
 * Tuned with 500 trees, depth 8
 * Best raw accuracy (~71%)
@@ -178,9 +178,9 @@ Two classification models were developed:
 
 ---
 
-# 🏆 Final Model Chosen
+## Final Model Chosen
 
-## ⭐ **Random Forest Classifier (with hyperparameter optimization)**
+### **Random Forest Classifier (with hyperparameter optimization)**
 
 Chosen because:
 ✔ Better overall balance across all CSAT classes
@@ -190,11 +190,11 @@ Chosen because:
 
 ---
 
-# 🧠 7. Explainability – SHAP Analysis
+## 7. Explainability – SHAP Analysis
 
 SHAP values were used to interpret the model:
 
-### **Most Influential Features According to SHAP**
+#### **Most Influential Features According to SHAP**
 
 1. Sentiment score (customer_response)
 2. Agent’s historical CSAT
@@ -208,7 +208,7 @@ SHAP values were used to interpret the model:
 
 ---
 
-# 🛠️ Technologies Used
+## 🛠️ Technologies Used
 
 * Python
 * Pandas, NumPy
@@ -217,4 +217,3 @@ SHAP values were used to interpret the model:
 * Seaborn, Matplotlib
 * NLTK VADER Sentiment
 * SHAP Explainability
-* 
